@@ -1594,6 +1594,7 @@ Travis CI is used for node testing:
 ```>.travis.yml
 language: node_js
 node_js:
+  - "0.11"
   - "0.10"
   - "0.8"
 before_install:
