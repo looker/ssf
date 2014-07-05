@@ -1495,11 +1495,17 @@ perf.log
 ```
 
 ```>.npmignore
-test/*.tsv
+test/
+misc/
 node_modules/
 tmp/
+Makefile
+ssf.md
+index.html
 .gitignore
 .vocrc
+.jscs.json
+.travis.yml
 v8.log
 perf.log
 ```
@@ -1556,10 +1562,13 @@ coveralls:
 ```json>package.json
 {
   "name": "ssf",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "author": "SheetJS",
   "description": "Format data using ECMA-376 spreadsheet Format Codes",
   "keywords": [ "format", "sprintf", "spreadsheet" ],
+  "bin": {
+    "ssf": "./bin/ssf.njs"
+  },
   "main": "ssf.js",
   "dependencies": {
     "voc":"",
@@ -1572,9 +1581,6 @@ coveralls:
   "repository": { "type":"git", "url":"git://github.com/SheetJS/ssf.git" },
   "scripts": {
     "test": "mocha -R spec"
-  },
-  "bin": {
-    "ssf": "./bin/ssf.njs"
   },
   "config": {
     "blanket": {

@@ -1,9 +1,12 @@
 {
   "name": "ssf",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "author": "SheetJS",
   "description": "Format data using ECMA-376 spreadsheet Format Codes",
   "keywords": [ "format", "sprintf", "spreadsheet" ],
+  "bin": {
+    "ssf": "./bin/ssf.njs"
+  },
   "main": "ssf.js",
   "dependencies": {
     "voc":"",
@@ -16,9 +19,6 @@
   "repository": { "type":"git", "url":"git://github.com/SheetJS/ssf.git" },
   "scripts": {
     "test": "mocha -R spec"
-  },
-  "bin": {
-    "ssf": "./bin/ssf.njs"
   },
   "config": {
     "blanket": {
