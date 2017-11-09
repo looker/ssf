@@ -124,7 +124,7 @@ function eval_fmt(fmt/*:string*/, v/*:any*/, opts/*:any*/, flen/*:number*/) {
 					(c=out[jj].t) === "?" || c === "D" ||
 					((c === " " || c === "t") && out[jj+1] != null && (out[jj+1].t === '?' || out[jj+1].t === "t" && out[jj+1].v === '/')) ||
 					(out[i].t === '(' && (c === ' ' || c === 'n' || c === ')')) ||
-					(c === 't' && (out[jj].v === '/' || out[jj].v === ' ' && out[jj+1] != null && out[jj+1].t == '?'))
+                    c === 't' && (out[jj].v === '/' || '$€'.indexOf(out[jj].v) > -1 || out[jj].v === ' ' && out[jj+1] != null && out[jj+1].t == '?')
 				)) {
 					out[i].v += out[jj].v;
 					out[jj] = {v:"", t:";"}; ++jj;
