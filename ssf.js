@@ -308,14 +308,18 @@ function hashq(str) {
 	return o;
 }
 function rnd(val, d) { var dd = Math.pow(10,d); return ""+(Math.round(val * dd)/dd); }
-function dec(val, d) { if (d < ('' + Math.round((val-Math.floor(val))*Math.pow(10,d))).length) {
-        return 0;
-    }return Math.round((val-Math.floor(val))*Math.pow(10,d)); }
+function dec(val, d) {
+	if (d < ('' + Math.round((val-Math.floor(val))*Math.pow(10,d))).length) {
+		return 0;
+	}
+	return Math.round((val-Math.floor(val))*Math.pow(10,d));
+}
 function carry(val, d) {
-    if (d < ('' + Math.round((val-Math.floor(val))*Math.pow(10,d))).length) {
-        return 1;
-    }
-    return 0;}
+	if (d < ('' + Math.round((val-Math.floor(val))*Math.pow(10,d))).length) {
+		return 1;
+	}
+	return 0;
+}
 function flr(val) { if(val < 2147483647 && val > -2147483648) return ""+(val >= 0 ? (val|0) : (val-1|0)); return ""+Math.floor(val); }
 function write_num_flt(type, fmt, val) {
 	if(type.charCodeAt(0) === 40 && !fmt.match(closeparen)) {
@@ -702,7 +706,7 @@ out[i].v = write_date(out[i].t.charCodeAt(0), out[i].v, dt, ss0);
 					(c=out[jj].t) === "?" || c === "D" ||
 					((c === " " || c === "t") && out[jj+1] != null && (out[jj+1].t === '?' || out[jj+1].t === "t" && out[jj+1].v === '/')) ||
 					(out[i].t === '(' && (c === ' ' || c === 'n' || c === ')')) ||
-					(c === 't' && (out[jj].v === '/' || out[jj].v === ' ' && out[jj+1] != null && out[jj+1].t == '?'))
+                    	                c === 't' && (out[jj].v === '/' || '$€'.indexOf(out[jj].v) > -1 || out[jj].v === ' ' && out[jj+1] != null && out[jj+1].t == '?')
 				)) {
 					out[i].v += out[jj].v;
 					out[jj] = {v:"", t:";"}; ++jj;
