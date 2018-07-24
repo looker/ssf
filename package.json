@@ -16,6 +16,9 @@
 		"blanket": "~1.2.3",
 		"@sheetjs/uglify-js":"~2.7.3"
 	},
+       "publishConfig": {
+                "registry": "https://nexusrepo.looker.com/repository/looker-npm-private/"
+        },
 	"repository": { "type":"git", "url":"git://github.com/SheetJS/ssf.git" },
 	"scripts": {
 		"test": "make test"
