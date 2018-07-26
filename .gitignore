@@ -23,6 +23,7 @@ tmp
 *.html
 *.sheetjs
 *.exe
+.npmrc
 perf.log
 ctest/test.js
 ctest/sauce*

@@ -651,7 +651,8 @@ function eval_fmt(fmt, v, opts, flen) {
 				o = c; while(fmt.charAt(++i) === c) o+=c;
 				out[out.length] = {t:c, v:o}; lst = c; break;
 			case '*': ++i; if(fmt.charAt(i) == ' ' || fmt.charAt(i) == '*') ++i; break; // **
-			case '(': case ')': out[out.length] = {t:(flen===1?'t':c), v:c}; ++i; break;
+		        case '(': case ')':
+                               out[out.length] = {t:(flen===1 || (typeof v === 'number' && v < 0) ?'t':c), v:c}; ++i; break;
 			case '1': case '2': case '3': case '4': case '5': case '6': case '7': case '8': case '9':
 				o = c; while(i < fmt.length && "0123456789".indexOf(fmt.charAt(++i)) > -1) o+=fmt.charAt(i);
 				out[out.length] = {t:'D', v:o}; break;
@@ -706,7 +707,7 @@ out[i].v = write_date(out[i].t.charCodeAt(0), out[i].v, dt, ss0);
 					(c=out[jj].t) === "?" || c === "D" ||
 					((c === " " || c === "t") && out[jj+1] != null && (out[jj+1].t === '?' || out[jj+1].t === "t" && out[jj+1].v === '/')) ||
 					(out[i].t === '(' && (c === ' ' || c === 'n' || c === ')')) ||
-                    	                c === 't' && (out[jj].v === '/' || '$€'.indexOf(out[jj].v) > -1 || out[jj].v === ' ' && out[jj+1] != null && out[jj+1].t == '?')
+                                        (c === 't' && (out[jj].v === '/' || out[jj].v === ' ' && out[jj+1] != null && out[jj+1].t == '?'))
 				)) {
 					out[i].v += out[jj].v;
 					out[jj] = {v:"", t:";"}; ++jj;
